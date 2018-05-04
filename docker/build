@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker build -f app/Dockerfile -t docker-jenkins-1/app:latest ./app
+docker build -f node/Dockerfile -t docker-jenkins-1/node:latest ./node

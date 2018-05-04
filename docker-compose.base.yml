@@ -1,0 +1,32 @@
+version: '2'
+services:
+  app:
+    build:
+      context: ./docker/app
+      dockerfile: Dockerfile
+    image: docker-jenkins-1/app
+    volumes:
+      - .:/var/www/html
+    networks:
+      - djnet
+  node:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+    image: docker-jenkins-1/node
+    volumes:
+      - .:/var/www/html
+    networks:
+      - djnet
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - djnet
+  redis:
+    image: redis:alpine
+    volumes:
+      - redisdata:/data
+    networks:
+      - djnet
